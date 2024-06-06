@@ -35,6 +35,10 @@ public class GameService {
         return modelMapper.map(game, GameDTO.class);
     }
 
+    public GameEntity getGameById2(Long id) {
+        GameEntity game = gameRepository.findById(id).orElse(null);
+        return game;
+    }
     public void deleteGame(Long id) {
         gameRepository.deleteById(id);
     }

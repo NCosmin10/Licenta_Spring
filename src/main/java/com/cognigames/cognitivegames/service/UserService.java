@@ -35,7 +35,24 @@ public class UserService {
         return modelMapper.map(user, UserDTO.class);
     }
 
+    public UserEntity getUserById2(Long id) {
+        UserEntity user = userRepository.findById(id).orElse(null);
+        return user;
+    }
+    public UserDTO getUserByUsername(String username) {
+        UserEntity user = userRepository.findByUsername(username);
+        return modelMapper.map(user, UserDTO.class);
+    }
+
+    public long getIdByUsername(String username) {
+        long id = userRepository.findByUsername(username).getId();
+        return id;
+    }
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public UserEntity findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

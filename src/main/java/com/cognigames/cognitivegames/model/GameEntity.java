@@ -15,8 +15,4 @@ public class GameEntity {
     @Basic
     @Column(name = "game_name", nullable = false)
     private String gameName;
-
-    @Basic
-    @Column(name = "game_description")
-    private String gameDescription;
 }

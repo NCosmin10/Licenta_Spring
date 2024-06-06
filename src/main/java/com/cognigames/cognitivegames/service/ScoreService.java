@@ -1,5 +1,6 @@
 package com.cognigames.cognitivegames.service;
 
+import com.cognigames.cognitivegames.config.util.JwtTokenUtil;
 import com.cognigames.cognitivegames.dto.ScoreDTO;
 import com.cognigames.cognitivegames.model.ScoreEntity;
 import com.cognigames.cognitivegames.repository.ScoreRepository;
@@ -18,8 +19,20 @@ public class ScoreService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private GameService gameService;
+
     public ScoreDTO saveScore(ScoreDTO scoreDTO) {
-        ScoreEntity score = modelMapper.map(scoreDTO, ScoreEntity.class);
+        //ScoreEntity score = modelMapper.map(scoreDTO, ScoreEntity.class);
+        ScoreEntity score = new ScoreEntity();
+        score.setScore(scoreDTO.getScore());
+        score.setUser(userService.getUserById2(scoreDTO.getUserId()));
+        score.setGame(gameService.getGameById2(scoreDTO.getGameId()));
+        score.setDate(scoreDTO.getDate());
         score = scoreRepository.save(score);
         return modelMapper.map(score, ScoreDTO.class);
     }

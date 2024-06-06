@@ -14,4 +14,13 @@ public class ScoreDTO {
     private Long gameId;
     private int score;
     private Date date;
+    private String username;
+
+    public ScoreDTO() {
+    }
+    public ScoreDTO(String username, int score, Long userId) {
+        this.score= score;
+        this.username = username;
+        this.userId = userId;
+    }
 }

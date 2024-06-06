@@ -54,7 +54,7 @@ public class SecurityConfig {
                 )
                 .authorizeRequests(auth -> auth
                         .requestMatchers("/auth").permitAll()
-                        .requestMatchers("/games/**").permitAll()
+                        .requestMatchers("/score/reaction_time").permitAll()
                 )
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 

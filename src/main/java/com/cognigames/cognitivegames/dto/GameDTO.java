@@ -9,5 +9,4 @@ import lombok.Setter;
 public class GameDTO {
     private Long id;
     private String gameName;
-    private String gameDescription;
 }
