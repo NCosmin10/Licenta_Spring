@@ -54,6 +54,7 @@ public class SecurityConfig {
                 )
                 .authorizeRequests(auth -> auth
                         .requestMatchers("/auth").permitAll()
+                        .requestMatchers("/games/**").permitAll()
                 )
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
@@ -64,6 +65,7 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {
