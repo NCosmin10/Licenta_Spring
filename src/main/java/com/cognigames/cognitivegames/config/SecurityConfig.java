@@ -51,11 +51,12 @@ public class SecurityConfig {
                 .sessionManagement(sessionManagement ->
                         sessionManagement
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
+                )/*
                 .authorizeRequests(auth -> auth
                         .requestMatchers("/auth").permitAll()
                         .requestMatchers("/score/reaction_time").permitAll()
                 )
+                */
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
