@@ -52,11 +52,11 @@ public class ScoreController {
             int numberOfScores2 = allScores.stream().filter(score -> score.getGameId() == finalI).toList().size();
 
             GameStatsDTO gameStatsDTO = new GameStatsDTO("Game ", 0L, 0, 0L);
-            if(i == 1){
-                gameStatsDTO.setPersonalBestScore(Integer.MAX_VALUE);
-            }
             List<ScoreDTO> gameScores = userScores.stream().filter(score -> score.getGameId() == finalI).toList();
 
+            if(i == 1 && gameScores.size() > 0){
+                gameStatsDTO.setPersonalBestScore(Integer.MAX_VALUE);
+            }
             gameStatsDTO.setGameName(games.get(i - 1).getGameName());
 
             for (ScoreDTO score : gameScores) {
